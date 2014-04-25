@@ -64,4 +64,4 @@ The calculation of the average of each relevant measure column for each activity
 
 Result
 ------
-The result data set of the calculation (sorted by activity and subject) is written in a textfile (result.txt) with a semicolon a separator.
+The result data set of the calculation (sorted by activity and subject) is written in a textfile (result.txt) with a semicolon as separator.
