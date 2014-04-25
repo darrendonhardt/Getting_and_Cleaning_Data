@@ -21,10 +21,14 @@ Usage
 - unzip the datasource
 - place the R-script in the created directory "UCI HAR Dataset"
 - run the R-script
-  source("run_analyses.R")
+```
+source("run_analyses.R")
+```
 
 Implementation
 =========================
+Reading and Combining files 
+------
 The following files were read into R:
 - ./features.txt
 - ./activity_labels.txt
@@ -36,22 +40,28 @@ The following files were read into R:
 - ./train/y_train.txt
 
 All columns got descriptive column names during the read step.
-For the files X_test.txt and X_train.txt the values from the features.txt file were used after doing some cleaning actions on the names.
+
+For the files X_test.txt and X_train.txt the values from the features.txt file were used 
+after doing some cleaning actions on the names. (function ```gsup```)
 - removed ( and )
 - replaced - with _
 
-Afterwards the files are binded together
-- y_test.txt is merged with activity_labels.txt via Activity_ID 
-  Afterwards the 3-files in the test-directory are combined via cbind
-- y_train.txt is merged with activity_labels.txt via Activity_ID 
-  Afterwards the 3-files in the train-directory are combined via cbind.
-- in a final step the test and train are combined via rbind
+Afterwards the files are combined together (functions ```merge```, ```cbind```, ```rbind```)
+- File y_test.txt is merged with activity_labels.txt via Activity_ID . Afterwards the 3-files in the test-directory are combined via cbind
+- File y_train.txt is merged with activity_labels.txt via Activity_ID . Afterwards the 3-files in the train-directory are combined via cbind.
+- In a final step the resulting test and train files are combined via rbind.
 
-The relevant measure (only the measurements on the mean and standard deviation have to be processed) columns can be identified by
+Calculation
+-------
+The relevant measure (only the measurements on the mean and standard deviation have to be processed) columns can be identified by 
 - *mean()
 - *std()
+in combination with the ```grep``` function
+
 Column names with meanFreq() are excluded.
 
-The calculation of the average of each relevant measure column for each activity and each subject is performed by using the package reshape2 and the function melt and dcast.
+The calculation of the average of each relevant measure column for each activity and each subject is performed by using the package ```reshape2``` and the function ```melt``` and ```dcast```.
 
+Result
+------
 The result data set of the calculation (sorted by activity and subject) is written in a textfile (result.txt).
