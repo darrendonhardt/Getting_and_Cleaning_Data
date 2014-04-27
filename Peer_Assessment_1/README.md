@@ -33,7 +33,7 @@ For the files X_test.txt and X_train.txt the values from the features.txt file w
 after doing some cleaning actions on the names. (function ```gsup```)
 - removed ( and )
 - replaced - with _
-
+ 
 Afterwards the files are combined together (functions ```merge```, ```cbind```, ```rbind```)
 - File y_test.txt is merged with activity_labels.txt via Activity_ID . Afterwards the 3-files in the test-directory are combined via cbind
 - File y_train.txt is merged with activity_labels.txt via Activity_ID . Afterwards the 3-files in the train-directory are combined via cbind.
